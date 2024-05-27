@@ -1,0 +1,130 @@
+.table_cat {
+    width: 95%;
+    height: 60px;
+    background-color: #01305a;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+}
+
+#continer_cat {
+    width: 60%;
+    margin: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.continer_content_cat {
+    width: 300px;
+    background-image: linear-gradient(to left, #007c72, #005baba1);
+}
+
+.table_cat_tr {
+    width: 95%;
+    height: 60px;
+    background-color: #85aed4a6;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #000;
+}
+
+#btn_serch {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 40px;
+    width: 60px;
+    background-color: #047d75;
+    margin-left: -5px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+}
+#btn_serch:hover{
+    background-color: #003b37;
+
+}
+#serch {
+    width: 300px;
+    height: 44px;
+    background-color: #6ca9e28f;
+    border: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#btn_add_cat{
+    padding: 9px 25px;
+    margin: 10px 29px;
+    font-size: 22px;
+    background-color: rgb(3, 167, 3);
+    color: #fff;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+    border: 3px solid rgb(255, 255, 255);
+
+}
+#btn_add_cat:hover{
+    background-color: #fff;
+    color: rgb(3, 167, 3);
+    border: 3px solid rgb(3, 167, 3);
+}
+#form_add_cat{
+    width: 25%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    right: 40%;
+    top: 200px;
+    transform: translateY(-50%);
+    background-color: #156ab4e5;
+    color: #fff;
+    border-radius: 20px;
+    transition: .4s;
+    transform: scale(0);
+}
+#input_add{
+    width: 250px;
+    margin: 25px 0;
+    padding: 5px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+#btn_add{
+    width: 250px;
+    padding: 5px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    background-color: rgb(3, 167, 3);
+    color: #fff;
+    cursor: pointer;
+    transition: .4s;
+    
+}#btn_add:hover{
+    background-color: rgb(22, 94, 22);
+
+}
+#exite_form_add_cat{
+    position: fixed;
+    color: #000;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
