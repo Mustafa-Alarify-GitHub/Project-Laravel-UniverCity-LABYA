@@ -85,6 +85,7 @@ table{
     color: #000;
     border: none;
     transition: .4s;
+    cursor: pointer;
 }
 .tr_Regster_student:hover{
   background-color: #a6b5be;

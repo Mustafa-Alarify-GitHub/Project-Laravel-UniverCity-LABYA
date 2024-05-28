@@ -1,7 +1,14 @@
 
-function tr_data(name, rate, type_hith_level, type_RR, type) {
+function kk(id){
+location.pathname=`/info-regster_student/${id}`;
+console.log(id)
+}
+
+
+
+function tr_data(id,name, rate, type_hith_level, type_RR, type) {
     document.write(`
-        <tr class="tr_Regster_student" style="
+        <tr onclick="kk('${id}')" class="tr_Regster_student" style="
         background-color:${
             type == "مرفوض" ? "#f16f6f" 
             : type == "مقبول" ? "#57d259" 
