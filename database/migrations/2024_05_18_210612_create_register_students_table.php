@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('register_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('number_GOV')->comment("رقم الوطني")->unique();
             $table->string('number_Rigstration')->comment("رقم القيد")->unique();
             $table->string('number_ID')->comment("رقم الهويخ")->unique();

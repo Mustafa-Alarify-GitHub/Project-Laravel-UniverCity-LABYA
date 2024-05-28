@@ -1,0 +1,61 @@
+*{margin: 0;padding: 0;direction: rtl;}
+#nav_info{
+    width: 100%;
+    height: 10vh;
+    box-shadow: 0 0 20px black;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+#body_info{
+    width: 100%;
+    background-color: #11111110;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+#info_student{
+    direction: rtl;
+    width: 48%;
+    height: 50vh;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #444;
+}
+#title_info{
+    margin: 10px 40px;
+    color: #005aab;
+}
+#des_info{
+    margin: 10px 40px;
+}
+hr{
+    width: 90%;
+    
+}
+#des_info span{
+    font-weight: 900;
+    width: 30%;
+}
+#smoll_data_info{
+    width: 96%;
+    direction: rtl;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #444;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+#colum_info_S{
+    margin: 20px 0;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;flex-direction: column;
+}

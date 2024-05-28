@@ -2,7 +2,7 @@
 @section('title', ' جميع الكتب')
 @section('content')
     <div id="continer_library">
-        <div class="continer_content_Library">
+        <div class="continer_content_Library" >
             <h4 id="title_content_r">عدد ألكتب</h4>
             <hr>
             <h1 id="count_content_r">25</h1>
@@ -31,10 +31,13 @@
                 <h1>ألاقسام</h1>
             </center>
             <div class="list_catogries">
-                <h4 id="name_cat"> قسم القران</h4>
-                <h4 id="name_cat">قسم الفلسفه</h4>
-                <h4 id="name_cat">قسم التربيه الأسلاميه</h4>
-                <h4 id="name_cat">قسم ألقران و علومه</h4>
+                @foreach ($data as $i)
+
+                <a href= {{ route('show.subject', $i->id) }}><h4 id="name_cat">{{$i->name}}</h4></a>
+                
+            
+            @endforeach
+               
             </div>
 
         </div>
@@ -46,28 +49,58 @@
             </div>
 
             {{-- table tr body TODO foreach here --}}
-            <script src="{{ asset('js/Tr_Books.js') }}"></script>
-            <script>
-                tr_books(1, "علوم القران");
-                tr_books(2, "تربيه أسلاميه");
-                tr_books(3, "علوم الدين");
-                tr_books(4, "رياضيات");
-                tr_books(5, "كتاب جديد");
-            </script>
+        <script src="{{ asset('js/Tr_Books.js') }}"></script>
+
+
+
+                   @foreach ($subj as $sb)
+
+                   {{-- <div class="table_books_body">
+                    <h3 style="width: 20%">{{$sb->id}}</h3>
+                    <h3 style="width: 40%"> {{$sb->name}}</h3>
+                    <div style="display: flex ;width: 40%;justify-content: space-around">
+                    
+                        <form action="{{ route('delete.subject', $sb->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit"><img src="{{asset('image/image/icon_delete.png')}}" alt=""></button>
+                        </form>
+                        <a href="#"><img src="{{asset('image/image/icon_edit.png')}}" alt=""></a>
+                    </div>
+                </div> --}}
+           
+                   <script>
+      
+                   
+                      tr_books({{{$sb->id}}},"{{$sb->name}}");
+
+                   </script>
+               
+               @endforeach
 
 
         </div>
 
         <div id="form_add_book">
             <h1 id="btn_exit_form_book">X</h1>
-            <form>
+
+
+
+
+
+            <form action="{{route('add.subject')}}" method="post" enctype="multipart/form-data">
+                @csrf
+
                 <h1>أضافه كتاب جديد</h1>
-                <input type="text">
-                <select name="" id="">
-                    <option value="">قسم العلوم</option>
-                    <option value="">قسم الرباضبات</option>
+                <input type="text" name="bookname">
+
+                <select name="cat" id="">
+                    @foreach ($data as $i)
+                        <option value={{$i->id}}>{{$i->name}}</option>
+                    @endforeach
                 </select>
-                <input type="file" id="img" style="display: none">
+
+                <input type="file" name="namefile" id="img" style="display: none" required>
                 <label for="img" id="add_img_books">
                     <h2>
                         حدد ملف PDF

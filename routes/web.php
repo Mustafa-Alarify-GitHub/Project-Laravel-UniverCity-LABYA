@@ -1,46 +1,60 @@
 <?php
 
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\CatogryController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\RegisterStudent_Controller;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view("/regster_student", "Admin.Register_Student")->name("regster_student");
-Route::view("/Student_Grades", "Admin.Student_Grades")->name("Student_Grades");
 
 
-//  Catogries page
 
-// Route::view("/Get_All_Cat","Admin.Catogries.Get_All_Cat")->name("Get_All_Cat");
-Route::get("Get_All_Cat", function () {
-    $data = DB::table("catogries")->get();
-    return view("Admin.Catogries.Get_All_Cat", ["data" => $data]);
-})->name("Get_All_Cat");
-Route::view("/Setting_Cat", "Admin.Catogries.Setting_Cat")->name("Setting_Cat");
+Route::controller(CatogryController::class)->group(function(){
+    Route::get('Get_All_Cat','index')->name('Get_All_Cat'); 
+    Route::post('/add','create')->name('Add');  
+    Route::delete('/catogries/{id}','delete');
 
-
-//  Library page
-
-Route::view("/Get_All_library", "Admin.Library.Get_All_library")->name("Get_All_library");
-Route::view("/Setting_Library", "Admin.Library.Setting_Library")->name("Setting_Library");
+});
 
 
-Route::post("/add", function (Request $request) {
-    //  return $request;
-    DB::table("catogries")->insert(["name" => $request->name]);
-    return to_route("Get_All_Cat");
-})->name("Add");
+Route::controller(RegisterStudent_Controller::class)->group(function(){
+    Route::get('/regster_student','index')->name('regster_student'); 
+    Route::get('/Student_Grades','student_grades')->name('Student_Grades'); 
+    Route::get('/info-regster_student/{id}',"show")->name('show.regster_student'); 
+
+    // Route::post('/addregister','create')->name('add.register');  
+    // Route::get('/showregister/{id}','showregister')->name('show.register'); 
+    // Route::delete('/deleteregister/{id}','delete')->name('delete.register');
+
+    // Route::get('/get','index')->name('get_register'); 
+
+
+
+
+});
+
+
+Route::controller(NewsController::class)->group(function(){
+    Route::get('/get','index')->name('get_news'); 
+    Route::post('/addnews','create')->name('add.news');  
+    Route::get('/shownews/{id}','showregister')->name('show.news'); 
+    Route::delete('/deletenews/{id}','delete')->name('delete.news');
+
+
+
+});
+
+Route::controller(SubjectController::class)->group(function(){
+    Route::get('/Setting_Library','index')->name('Setting_Library'); 
+    Route::post('/addsubject','store')->name('add.subject');  
+    Route::get('/show/{id}','showsubject')->name('show.subject'); 
+    Route::delete('/deletesubject/{id}','delete')->name('delete.subject');
+});
+

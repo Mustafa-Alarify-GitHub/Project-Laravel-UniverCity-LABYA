@@ -44,6 +44,37 @@ return [
             'throw' => false,
         ],
 
+        'Filename' => [
+            'driver' => 'local',
+            'root' => public_path('file_subject'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw'=>false,
+        ],
+        'Images' => [
+            'driver' => 'local',
+            'root' => public_path('image_news'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw'=>false,
+        ],
+
+        'Img_Birth' => [
+            'driver' => 'local',
+            'root' => public_path('img_birth'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw'=>false,
+        ],
+
+        'Img_Hith_Level' => [
+            'driver' => 'local',
+            'root' => public_path('img_hith_level'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw'=>false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

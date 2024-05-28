@@ -31,19 +31,19 @@
 
     {{-- Table --}}
     <hr>
-   <div id="title_regster">
-    <div class="status_regster">
-        <h1>قائمه طلبات التسجيل </h1>
+    <div id="title_regster">
+        <div class="status_regster">
+            <h1>قائمه طلبات التسجيل </h1>
+        </div>
+        <div id="des_colors">
+            <div id="color_red"></div> تم الرفظ الطلب
+            <div id="color_green"></div> تمت موافقه الطلب
+            <div id="color_yellow"></div> في حاله أنتظار
+        </div>
     </div>
-    <div id="des_colors">
-        <div id="color_red"></div> تم الرفظ الطلب
-        <div id="color_green"></div> تمت موافقه الطلب
-        <div id="color_yellow"></div> في حاله أنتظار
-    </div>
-   </div>
     <table id="table_Regster_Student" border="1px">
         <thead>
-            <tr>
+            <tr onclick="">
                 <td>الاسم</td>
                 <td>نسبه الشهاده </td>
                 <td>القسم</td>
@@ -53,16 +53,23 @@
 
         <tbody>
             <script src="{{ asset('js/Tr_Regster_Student.js') }}"></script>
-            <script>
-                // TODO Here Foreach
-                tr_data("خالد علي محسن الذماري", "77", "علمي", "أنتساب","مقبول");
-                tr_data("خالد علي محسن الذماري", "50", "علمي", "أنتساب","انتظر");
-                tr_data("مصطفئ محمد سالم العؤيفي", "50", "علمي", "أنتساب","مرفوض");
-            
-            </script>
+
+            @foreach ($data as $item)
+           
+                <script>
+                    tr_data(
+                         {{ $item->id }},
+                        " {{ $item->name }}",
+                        " {{ $item->rate}}",
+                        "{{ $item->type_hith_level}}",
+                        "{{ $item->type_RR }}",
+                        " {{ $item->status_regster}} ");
+                </script>
+
+            @endforeach
+
         </tbody>
     </table>
-
 
     <script src="{{ asset('js/Btn_Slider_Regster_Student.js') }}"></script>
 @endsection
