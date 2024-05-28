@@ -9,11 +9,6 @@
         </div>
 
         {{-- TODO ==> Search Here --}}
-        <form  action={{ route('serch.index') }} method='post'>
-            @csrf
-            <button type="submit" id="btn_serch">بحث</button>
-              <input type="text" id="serch" name="search">
-          </form>
 
 
 

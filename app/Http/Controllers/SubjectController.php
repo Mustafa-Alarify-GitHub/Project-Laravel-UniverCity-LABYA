@@ -56,4 +56,15 @@ class SubjectController extends Controller
         // return $data;
 
     }
+
+    public function Search(){
+
+
+        $subjectsearch=Subject::latest();
+        $data = Catogry::all();
+        if(request('search')){
+            $subjectsearch->where('name','LIKE','%'. request('search') .'%');
+        }
+        return view('pageSearchLibrary',['subj'=> $subjectsearch->get(),"data"=>$data]);
+    }
 }

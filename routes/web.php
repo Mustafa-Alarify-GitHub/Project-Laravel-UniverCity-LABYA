@@ -21,6 +21,8 @@ Route::controller(CatogryController::class)->group(function(){
     Route::post('/add','create')->name('Add');  
     Route::delete('/catogries/{id}','delete');
 
+    Route::post('/','Search')->name('serch.index'); 
+
 });
 
 
@@ -56,5 +58,6 @@ Route::controller(SubjectController::class)->group(function(){
     Route::post('/addsubject','store')->name('add.subject');  
     Route::get('/show/{id}','showsubject')->name('show.subject'); 
     Route::delete('/deletesubject/{id}','delete')->name('delete.subject');
+    Route::post('/','Search')->name('serch.index'); 
 });
 

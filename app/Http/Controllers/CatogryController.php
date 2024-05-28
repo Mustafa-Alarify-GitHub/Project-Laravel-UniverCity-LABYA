@@ -33,4 +33,14 @@ class CatogryController extends Controller
         return redirect()->route('Get_All_Cat');
     }
 
+    public function Search(){
+
+
+        $catogrysearch=Catogry::latest();
+        if(request('search')){
+            $catogrysearch->where('name','LIKE','%'. request('search') .'%');
+        }
+        return view('pageSerch',['data'=> $catogrysearch->get()]);
+    }
+
 }
