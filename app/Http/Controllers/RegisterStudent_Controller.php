@@ -13,15 +13,24 @@ class RegisterStudent_Controller extends Controller
     public function index()
     {
         $data = Register_student::get();
-        return view("Admin.Register_Student",["data"=> $data]);
+        $wait = Register_student::where("status_regster","انتظر")->count();
+        $yes = Register_student::where("status_regster","مقبول")->count();
+        $no = Register_student::where("status_regster","مرفوض")->count();
+        return view("Admin.Register_Student", [
+            "data" => $data,
+            "wait" => $wait,
+            "yes" => $yes,
+            "no" => $no,
+        ]);
     }
 
 
-    public function student_grades(){
+    public function student_grades()
+    {
         $register_student = Register_student::all();
         return $register_student;
         // return view("Admin.Student_Grades");
-    
+
     }
 
     /**
@@ -35,27 +44,13 @@ class RegisterStudent_Controller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        // return $id;
-        $data = Register_student::where("id", $id)->first();
-        return view("Admin.info_regster_student",["data"=> $data]);
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $data = Register_student::where("id", $id)->first();
+        return view("Admin.info_regster_student", ["data" => $data]);
     }
 
     /**
@@ -63,14 +58,9 @@ class RegisterStudent_Controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Register_student::where("id", $id)->update([
+            "status_regster" => $request->status_regster,
+        ]);
+        return to_route("regster_student");
     }
 }

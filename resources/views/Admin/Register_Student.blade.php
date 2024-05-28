@@ -14,18 +14,18 @@
         <div class="continer_content_1">
             <h4 id="title_content_r"> في قائمه الانتظار</h4>
             <hr>
-            <h1 id="count_content_r">25</h1>
+            <h1 id="count_content_r">{{$wait}}</h1>
         </div>
 
         <div class="continer_content_3">
             <h4 id="title_content_r">الطلبات المقبوله</h4>
             <hr>
-            <h1 id="count_content_r">25</h1>
+            <h1 id="count_content_r">{{$yes}}</h1>
         </div>
         <div class="continer_content_2">
             <h4 id="title_content_r">الطلبات المرفوضه</h4>
             <hr>
-            <h1 id="count_content_r">25</h1>
+            <h1 id="count_content_r">{{$no}}</h1>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
                         " {{ $item->rate}}",
                         "{{ $item->type_hith_level}}",
                         "{{ $item->type_RR }}",
-                        " {{ $item->status_regster}} ");
+                        "{{ $item->status_regster}}");
                 </script>
 
             @endforeach
