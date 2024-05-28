@@ -2,7 +2,7 @@
 @section('title', 'جميع ألاقسام')
 @section('content')
     <div id="continer_cat">
-        <div class="continer_content_cat">
+        <div class="continer_content_cat" >
             <h4 id="title_content_r">عدد ألاقسام</h4>
             <hr>
             <h1 id="count_content_r">25</h1>
@@ -23,7 +23,7 @@
         <h1 onclick="close_form_add();" id="btn_exit_form_book">X</h1>
         <h1>أضافه قسم جديد</h1>
         <input type="text" id="input_add" name="name">
-        <button id="btn_add" type="submit">أضافه</button>
+        <button id="btn_add" type="submit" >أضافه</button>
     </form>
 
     <div class="table_cat">
@@ -36,6 +36,7 @@
 
 
 
+
     {{-- Here Foreach --}}
 
 
@@ -45,10 +46,7 @@
         <script>Tr_Catogry({{$i->id}}, "{{$i->name}}", "2020/4/30");</script>
     @endforeach
     <script>
-        // Tr_Catogry(1, "mustafa", "2020/4/30");
-        // Tr_Catogry(2, "Emad", "2020/4/30");
-        // Tr_Catogry(3, "Mohammed", "2020/4/30");
-        // Tr_Catogry(4, "Mariam", "2020/4/30");
+
     </script>
 
     <script src="js/Form_add_Catogrye.js"></script>

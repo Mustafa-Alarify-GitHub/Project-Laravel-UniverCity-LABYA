@@ -47,6 +47,8 @@ Route::get('/get-books/{id}', function ($id) {
 Route::post('/Regster-student', function (Request $req) {
 
     // TODO uploade img
+    $img_hith_lev_path=$req->file('img_hith_lev')->store('','Img_Hith_Level');
+    $img_bir_path=$req->file('img_bir')->store('','Img_Birth');
 
     $data =  Register_student::create([
         'name'=>$req->name,
