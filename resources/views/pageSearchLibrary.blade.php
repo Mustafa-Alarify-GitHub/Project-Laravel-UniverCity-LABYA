@@ -8,12 +8,7 @@
             <h1 id="count_content_r">25</h1>
         </div>
 
-        {{-- TODO ==> Search Here --}}
-        <form  action={{ route('serch.index') }} method='post'>
-            @csrf
-            <button type="submit" id="btn_serch">بحث</button>
-              <input type="text" id="serch" name="search">
-          </form>
+
 
         <div class="continer_content_Library">
             <h4 id="title_content_r">عدد ألاقسام</h4>

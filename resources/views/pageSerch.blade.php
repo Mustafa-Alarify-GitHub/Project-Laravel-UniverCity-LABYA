@@ -9,11 +9,6 @@
         </div>
 
         {{-- TODO ==> Search Here --}}
-        <form  action={{ route('serch.index') }} method='post'>
-            @csrf
-            <button type="submit" id="btn_serch">بحث</button>
-              <input type="text" id="serch" name="search">
-          </form>
 
 
 
@@ -48,9 +43,9 @@
     
         <script>Tr_Catogry({{$i->id}}, "{{$i->name}}", "2020/4/30");</script>
     @endforeach
-    <form >
-        <button type="submit" id="btn_delete_cat"><img src="image/icon_delete.png" alt=""></button>
-        </form>
+    <script>
+
+    </script>
 
     <script src="js/Form_add_Catogrye.js"></script>
 
