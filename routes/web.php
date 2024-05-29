@@ -32,7 +32,7 @@ Route::controller(CatogryController::class)->group(function () {
 Route::controller(RegisterStudent_Controller::class)->group(function () {
     Route::get('/regster_student', 'index')->name('regster_student');
     Route::get('/Student_Grades', 'student_grades')->name('Student_Grades');
-    Route::get('/info-regster_student/{id}', "show")->name('show.regster_student');
+    Route::get('/info-regster_student/{id}', "edit")->name('show.regster_student');
     Route::put("/info-regster_student/{id}", "update")->name("update.regster_student");
 
     // Route::post('/addregister','create')->name('add.register');  

@@ -13,18 +13,32 @@ class RegisterStudent_Controller extends Controller
      */
     public function index()
     {
-        $data = Register_student::get();
+        $data = Register_student::orderBy("id","desc")->get();
         $wait = Register_student::where("status_regster","انتظر")->count();
         $yes = Register_student::where("status_regster","مقبول")->count();
         $no = Register_student::where("status_regster","مرفوض")->count();
         $isOpen =Stetting::where("id","1")->first("isOpenRegister");
-        return view("Admin.Register_Student", [
+
+        if($isOpen){
+            return view("Admin.Register_Student", [
+                "data" => $data,
+                "wait" => $wait,
+                "yes" => $yes,
+                "no" => $no,
+                "isOpen" => $isOpen,
+            ]);
+        }else{
+            $isOpen =['isOpenRegister'=>0];
+
+             return view("Admin.Register_Student", [
             "data" => $data,
             "wait" => $wait,
             "yes" => $yes,
             "no" => $no,
-            "isOpen" => $isOpen,
+            "isOpen" => null,
         ]);
+        }
+       
     }
 
 
