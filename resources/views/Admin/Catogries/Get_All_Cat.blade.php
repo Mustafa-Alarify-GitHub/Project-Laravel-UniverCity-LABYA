@@ -5,7 +5,7 @@
         <div class="continer_content_cat" >
             <h4 id="title_content_r">عدد ألاقسام</h4>
             <hr>
-            <h1 id="count_content_r">25</h1>
+            <h1 id="count_content_r">{{$count}}</h1>
         </div>
 
         {{-- TODO ==> Search Here --}}
@@ -46,12 +46,9 @@
     <script src="js/Tr_Get_All_Catogry.js"></script>
     @foreach ($data as $i)
     
-        <script>Tr_Catogry({{$i->id}}, "{{$i->name}}", "2020/4/30");</script>
+        <script >Tr_Catogry({{$i->id}}, "{{$i->name}}", "2020/4/30");</script>
     @endforeach
-    <form >
-        <button type="submit" id="btn_delete_cat"><img src="image/icon_delete.png" alt=""></button>
-        </form>
-
+    
     <script src="js/Form_add_Catogrye.js"></script>
 
 @endsection

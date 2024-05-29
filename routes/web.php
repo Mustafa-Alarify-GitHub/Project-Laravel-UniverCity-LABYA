@@ -13,9 +13,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/regster_student", [RegisterStudent_Controller::class, "index"])->name("regster_student");
-Route::get("/info-regster_student/{id}", [RegisterStudent_Controller::class, "edit"])->name("show.regster_student");
-Route::put("/info-regster_student/{id}", [RegisterStudent_Controller::class, "update"])->name("update.regster_student");
 Route::get("/open-close-Register/{boolen}", [StettingController::class, "open_close_Register"])->name("open_close_Register");
 
 Route::view("/Student_Grades", "Admin.Student_Grades")->name("Student_Grades");
@@ -25,7 +22,8 @@ Route::view("/Student_Grades", "Admin.Student_Grades")->name("Student_Grades");
 Route::controller(CatogryController::class)->group(function () {
     Route::get('Get_All_Cat', 'index')->name('Get_All_Cat');
     Route::post('/add', 'create')->name('Add');
-    Route::delete('/catogries/{id}', 'delete');
+    // conver function from delete to get becose JS
+    Route::get('/catogries/{id}', 'delete');
 
     Route::post('/', 'Search')->name('serch.index');
 });
@@ -35,6 +33,7 @@ Route::controller(RegisterStudent_Controller::class)->group(function () {
     Route::get('/regster_student', 'index')->name('regster_student');
     Route::get('/Student_Grades', 'student_grades')->name('Student_Grades');
     Route::get('/info-regster_student/{id}', "show")->name('show.regster_student');
+    Route::put("/info-regster_student/{id}", "update")->name("update.regster_student");
 
     // Route::post('/addregister','create')->name('add.register');  
     // Route::get('/showregister/{id}','showregister')->name('show.register'); 

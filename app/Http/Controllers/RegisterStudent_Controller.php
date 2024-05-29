@@ -30,9 +30,9 @@ class RegisterStudent_Controller extends Controller
 
     public function student_grades()
     {
-        $register_student = Register_student::all();
-        return $register_student;
-        // return view("Admin.Student_Grades");
+        // $register_student = Register_student::all();
+        // return $register_student;
+        return view("Admin.Student_Grades");
 
     }
 

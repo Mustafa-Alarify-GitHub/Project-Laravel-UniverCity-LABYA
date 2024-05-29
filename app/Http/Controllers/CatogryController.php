@@ -9,7 +9,8 @@ class CatogryController extends Controller
 {
     public function index(){
         $data = Catogry::all();
-        return view("Admin.Catogries.Get_All_Cat", ["data" => $data]);
+        $count = Catogry::all()->count();
+        return view("Admin.Catogries.Get_All_Cat", ["data" => $data,"count"=>$count]);
 
     
     }
