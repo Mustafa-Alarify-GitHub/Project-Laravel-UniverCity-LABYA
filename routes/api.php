@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Catogry;
+use App\Models\News;
 use App\Models\Register_student;
 use App\Models\Stetting;
 use App\Models\Subject;
@@ -97,5 +98,14 @@ Route::get("/Get-Register", function () {
 */
 Route::get("/Get-Status-Register-student/{id}", function ($id) {
     $data = Register_student::where("id", $id)->first();
+    return response()->json(["status" => 200, "data" => $data]);
+});
+/*
+| @method get
+| @route /Get-All-News
+| @des   Get all data Table News
+*/
+Route::get("/Get-All-News", function(){
+    $data = News::get();
     return response()->json(["status" => 200, "data" => $data]);
 });
