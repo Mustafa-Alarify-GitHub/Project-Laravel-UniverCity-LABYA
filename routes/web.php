@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RegisterStudent_Controller;
+use App\Http\Controllers\StettingController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ Route::get('/', function () {
 Route::get("/regster_student", [RegisterStudent_Controller::class, "index"])->name("regster_student");
 Route::get("/info-regster_student/{id}", [RegisterStudent_Controller::class, "edit"])->name("show.regster_student");
 Route::put("/info-regster_student/{id}", [RegisterStudent_Controller::class, "update"])->name("update.regster_student");
+Route::get("/open-close-Register/{boolen}", [StettingController::class, "open_close_Register"])->name("open_close_Register");
 
 Route::view("/Student_Grades", "Admin.Student_Grades")->name("Student_Grades");
 

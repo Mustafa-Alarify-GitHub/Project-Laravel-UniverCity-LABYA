@@ -60,13 +60,30 @@
     transition: 1s;
 
 }
-#btn_on_off{
+#btn_off{
     padding: 8px;
-    border-radius: 20px;
     font-size: 18px;
     transition: 1s;
     cursor: pointer;
     position: relative;
+    background-color: red;
+    border: none;
+    font-size: 25px;
+    color: #fff;
+
+    /* right: 57px; */
+}
+#btn_on{
+    padding: 8px;
+    font-size: 18px;
+    transition: 1s;
+    cursor: pointer;
+    position: relative;
+    background-color: #03a806;
+    border: none;
+    font-size: 25px;
+    color: #fff;
+
     /* right: 57px; */
 }
 table{
@@ -114,4 +131,13 @@ table{
 }
 tr:nth-child(even){
     background-color: #005bab25;
+}
+#Register_is_Close{
+    width: 100%;
+    margin-top: 50px;
+    font-size: 35px;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

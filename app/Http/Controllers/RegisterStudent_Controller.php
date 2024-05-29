@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Register_student;
+use App\Models\Stetting;
 use Illuminate\Http\Request;
 
 class RegisterStudent_Controller extends Controller
@@ -16,11 +17,13 @@ class RegisterStudent_Controller extends Controller
         $wait = Register_student::where("status_regster","انتظر")->count();
         $yes = Register_student::where("status_regster","مقبول")->count();
         $no = Register_student::where("status_regster","مرفوض")->count();
+        $isOpen =Stetting::where("id","1")->first("isOpenRegister");
         return view("Admin.Register_Student", [
             "data" => $data,
             "wait" => $wait,
             "yes" => $yes,
             "no" => $no,
+            "isOpen" => $isOpen,
         ]);
     }
 
@@ -36,10 +39,7 @@ class RegisterStudent_Controller extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.

@@ -45,9 +45,9 @@
     
         <script>Tr_Catogry({{$i->id}}, "{{$i->name}}", "2020/4/30");</script>
     @endforeach
-    <script>
-
-    </script>
+    <form >
+        <button type="submit" id="btn_delete_cat"><img src="image/icon_delete.png" alt=""></button>
+        </form>
 
     <script src="js/Form_add_Catogrye.js"></script>
 

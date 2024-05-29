@@ -6,9 +6,9 @@ function Tr_Catogry(id, name, Date) {
         <h2 style="width:35%;text-align: center">${Date}</h2>
         <div style="display: flex ;width: 20%;justify-content: space-around">
         <form>
-        <button type="submit"><img src="image/icon_delete.png" alt=""></button>
+        <button type="submit" id="btn_delete_cat"><img src="image/icon_delete.png" alt=""></button>
         </form>
-        <a href="#"><img src="image/icon_edit.png" alt=""></a>
+        <a href="#"><img src="image/icon_edit.png" id="btn_delete_cat" alt=""></a>
       </div>
     </div>
     `);

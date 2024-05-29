@@ -8,7 +8,15 @@
     align-items: center;
     color: #fff;
 }
-
+#btn_delete_cat{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .4s;
+}
+#btn_delete_cat:hover{
+   transform: scale(1.3);
+}
 #continer_cat {
     width: 60%;
     margin: 30px;
