@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Catogry;
+use App\Models\News;
 use App\Models\Register_student;
+use App\Models\Stetting;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +38,7 @@ Route::get('/get-all-catogries', function () {
 | @des   Get Book by ID ()
 */
 Route::get('/get-books/{id}', function ($id) {
-    $data =  Subject::where("id_catogry", $id)->get();
+    $data = Subject::where("id_catogry", $id)->get();
     return response()->json(["status" => 200, "data" => $data]);
 });
 /*
@@ -46,28 +48,64 @@ Route::get('/get-books/{id}', function ($id) {
 */
 Route::post('/Regster-student', function (Request $req) {
 
-    // TODO uploade img
-    $img_hith_lev_path=$req->file('img_hith_lev')->store('','Img_Hith_Level');
-    $img_bir_path=$req->file('img_bir')->store('','Img_Birth');
+    $D = Register_student::where("number_GOV", $req->number_GOV)
+        ->first();
 
-    $data =  Register_student::create([
-        'name'=>$req->name,
-        'number_GOV'=>$req->number_GOV,
-        'number_Rigstration'=>$req->number_Rigstration,
-        'number_ID'=>$req->number_ID,
-        'genders'=>$req->genders,
-        'nationality'=>$req->nationality,
-        'address'=>$req->address,
-        'name_mather'=>$req->name_mather,
-        'nationality_mather'=>$req->nationality_mather,
-        'img_birth'=>$req->img_birth,
-        'img_hith_level'=>$req->img_hith_level,
-        'type_s'=>$req->type_s,
-        'rate'=>$req->rate,
-        'number_phone'=>$req->number_phone,
-        'type_blood'=>$req->type_blood,
-        'type_hith_level'=>$req->type_hith_level,
-        'type_RR'=>$req->type_RR,
-    ]);
+    if ($D) {
+        return response()->json(["status" => 400, "massge" => "قدتم ارسال طلبك با الفعل"]);
+    } else {
+
+        // TODO uploade img
+        // $img_hith_lev_path = $req->file('img_hith_lev')->store('', 'Img_Hith_Level');
+        // $img_bir_path = $req->file('img_bir')->store('', 'Img_Birth');
+
+        $data = Register_student::create([
+            'name' => $req->name,
+            'number_GOV' => $req->number_GOV,
+            'number_Rigstration' => $req->number_Rigstration,
+            'number_ID' => $req->number_ID,
+            'genders' => $req->genders,
+            'nationality' => $req->nationality,
+            'address' => $req->address,
+            'name_mather' => $req->name_mather,
+            'nationality_mather' => $req->nationality_mather,
+            'img_birth' => $req->img_birth,
+            'img_hith_level' => $req->img_hith_level,
+            'type_s' => $req->type_s,
+            'rate' => $req->rate,
+            'number_phone' => $req->number_phone,
+            'type_blood' => $req->type_blood,
+            'type_hith_level' => $req->type_hith_level,
+            'type_RR' => $req->type_RR,
+        ]);
+        return response()->json(["status" => 200, "data" => $data]);
+    }
+});
+
+/*
+| @method get
+| @route /Get-Register
+| @des   Shose the Register student is open or close
+*/
+Route::get("/Get-Register", function () {
+    $data = Stetting::first("isOpenRegister");
+    return response()->json(["status" => 200, "data" => $data]);
+});
+/*
+| @method get
+| @route /Get-Status-Register-student
+| @des   Shose the Register student is ture or false or wait 
+*/
+Route::get("/Get-Status-Register-student/{id}", function ($id) {
+    $data = Register_student::where("id", $id)->first();
+    return response()->json(["status" => 200, "data" => $data]);
+});
+/*
+| @method get
+| @route /Get-All-News
+| @des   Get all data Table News
+*/
+Route::get("/Get-All-News", function(){
+    $data = News::get();
     return response()->json(["status" => 200, "data" => $data]);
 });
