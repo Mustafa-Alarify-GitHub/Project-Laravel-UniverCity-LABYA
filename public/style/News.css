@@ -1,0 +1,40 @@
+#continer_news {
+    width: 60%;
+
+    margin: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.continer_content_news {
+    width: 600px;
+    height: 250px;
+    border: 3px solid rgb(224, 223, 222);
+    background-color: rgb(224, 223, 222);
+    /* background-image: linear-gradient(to left, #007c72, #005baba1); */
+}
+
+.qwe{
+    float: right;
+    width: 40%;
+    height: 80%;
+
+}
+
+.asd{
+float: left;
+width: 60%;
+height: 80%;
+
+}
+
+
+
+#count_content_r_news{
+    margin: 10px 10px 0 0;
+    margin-top: 10px;
+    font-size: 22px;
+    color: #000000;
+}

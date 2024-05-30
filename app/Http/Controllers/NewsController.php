@@ -8,19 +8,27 @@ class NewsController extends Controller
 {
     public function index(){
         $news = News::all();
-        return   $news;
+        return view("News", ["news" => $news]);
     
     }
     public function create(Request $request){
-        $image_path=$request->file('nameimage')->store('','Images');
+        // $image_path=$request->file('nameimage')->store('','Images');
 
-        $news = News::create([
-            'title'=>$request->title,
-            'body'=>$request->body,
-            'img'=>'/image_news'.'/'.$image_path,
-        ]);
+        $imageData = $request->file('nameimg')->get();
 
-        return   $news;
+
+
+$news = new News;
+$news->body=$request->bodydescrtion;
+$news->img =$imageData;
+$news->save();
+
+        // $news = News::create([
+        //     'body'=>$request->body,
+        //     'img'=>'/image_news'.'/'.$image_path,
+        // ]);
+
+        return redirect()->route("get_news");
     }
 
 
@@ -33,4 +41,19 @@ class NewsController extends Controller
         $news->delete();
         return   $news;
     }
+
+
+
+
+
+
+
+    public function showImage($id)
+{
+
+    $imageData = News::findOrFail($id)->img;
+
+    return response($imageData)
+        ->header('Content-Type', 'image/jpeg'); // or 'image/png' حسب نوع الصورة
+}
 }

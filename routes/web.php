@@ -21,7 +21,7 @@ Route::controller(CatogryController::class)->group(function(){
     Route::post('/add','create')->name('Add');  
     Route::delete('/catogries/{id}','delete');
 
-    Route::post('/','Search')->name('serch.index'); 
+    Route::post('/ee','Search')->name('seeerch.index'); 
 
 });
 
@@ -46,6 +46,7 @@ Route::controller(RegisterStudent_Controller::class)->group(function(){
 Route::controller(NewsController::class)->group(function(){
     Route::get('/get','index')->name('get_news'); 
     Route::post('/addnews','create')->name('add.news');  
+    Route::get('/image/{id}','showImage')->name('image.show');
     Route::get('/shownews/{id}','showregister')->name('show.news'); 
     Route::delete('/deletenews/{id}','delete')->name('delete.news');
 
@@ -57,6 +58,8 @@ Route::controller(SubjectController::class)->group(function(){
     Route::get('/Setting_Library','index')->name('Setting_Library'); 
     Route::post('/addsubject','store')->name('add.subject');  
     Route::get('/show/{id}','showsubject')->name('show.subject'); 
+    Route::get('/pdf/{id}','viewPdf')->name('pdf.view'); 
+
     Route::delete('/deletesubject/{id}','delete')->name('delete.subject');
     Route::post('/','Search')->name('serch.index'); 
 });

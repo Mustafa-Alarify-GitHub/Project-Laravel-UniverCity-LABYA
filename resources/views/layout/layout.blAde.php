@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('style/Rigseter_student.css') }}">
     <link rel="stylesheet" href="{{ asset('style/Catogry.css') }}">
     <link rel="stylesheet" href="{{ asset('style/Library.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/News.css') }}">
     <title>
         @yield('title')
     </title>
@@ -72,13 +73,10 @@
             </a>
         </div>
 
-
-    
+        <hr>
 
         {{-- Button 5 --}}
-
-        <hr>
-        <a href="###" class="btn_drower">
+        <a href={{ route('get_news') }} class="btn_drower">
             <div class="img_btn">
                 <img src="{{ asset('image/news.png') }}" width="50px" alt="">
             </div>
@@ -87,6 +85,9 @@
             </div>
         </a>
         <hr>
+
+
+
 
     </div>
 
@@ -104,5 +105,6 @@
     </div>
 </body>
 <script src="{{ asset('js/Btn_catogry.js') }}"></script>
+
 
 </html>

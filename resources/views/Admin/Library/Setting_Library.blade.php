@@ -19,6 +19,8 @@
             <h4 id="title_content_r">عدد ألاقسام</h4>
             <hr>
             <h1 id="count_content_r">25</h1>
+
+        
         </div>
 
     </div>
@@ -56,9 +58,10 @@
 
                    @foreach ($subj as $sb)
 
-                   {{-- <div class="table_books_body">
+                   <div class="table_books_body">
                     <h3 style="width: 20%">{{$sb->id}}</h3>
                     <h3 style="width: 40%"> {{$sb->name}}</h3>
+                    <a href="{{ route('pdf.view',$sb->id) }}">View PDF</a>
                     <div style="display: flex ;width: 40%;justify-content: space-around">
                     
                         <form action="{{ route('delete.subject', $sb->id) }}" method="POST">
@@ -68,14 +71,14 @@
                         </form>
                         <a href="#"><img src="{{asset('image/image/icon_edit.png')}}" alt=""></a>
                     </div>
-                </div> --}}
+                </div>
            
-                   <script>
+                   {{-- <script>
       
                    
                       tr_books({{{$sb->id}}},"{{$sb->name}}");
 
-                   </script>
+                   </script> --}}
                
                @endforeach
 
@@ -101,7 +104,7 @@
                     @endforeach
                 </select>
 
-                <input type="file" name="namefile" id="img" style="display: none" required>
+                <input type="file" name="namefile" id="img" style="display: none" >
                 <label for="img" id="add_img_books">
                     <h2>
                         حدد ملف PDF
