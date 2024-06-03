@@ -1,25 +1,25 @@
 <?php
 
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Http\Controllers\CatogryController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\RegisterStudent_Controller;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\StettingController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+// open_close_Register
+Route::get('/open-close-Register/{id}',[StettingController::class,'open_close_Register']);
 
 
 Route::controller(CatogryController::class)->group(function(){
     Route::get('Get_All_Cat','index')->name('Get_All_Cat'); 
     Route::post('/add','create')->name('Add');  
-    Route::delete('/catogries/{id}','delete');
+    Route::get('/catogries/{id}','delete');
 
     Route::post('/ee','Search')->name('seeerch.index'); 
 
@@ -30,6 +30,7 @@ Route::controller(RegisterStudent_Controller::class)->group(function(){
     Route::get('/regster_student','index')->name('regster_student'); 
     Route::get('/Student_Grades','student_grades')->name('Student_Grades'); 
     Route::get('/info-regster_student/{id}',"show")->name('show.regster_student'); 
+    Route::put('/info-regster_student/{id}',"update")->name('update.regster_student'); 
 
     // Route::post('/addregister','create')->name('add.register');  
     // Route::get('/showregister/{id}','showregister')->name('show.register'); 
@@ -59,7 +60,6 @@ Route::controller(SubjectController::class)->group(function(){
     Route::post('/addsubject','store')->name('add.subject');  
     Route::get('/show/{id}','showsubject')->name('show.subject'); 
     Route::get('/pdf/{id}','viewPdf')->name('pdf.view'); 
-
     Route::delete('/deletesubject/{id}','delete')->name('delete.subject');
     Route::post('/','Search')->name('serch.index'); 
 });

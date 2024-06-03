@@ -11,7 +11,10 @@ class SubjectController extends Controller
     public function index(){
         $data = Catogry::all();
         $subj=Subject::all();
-        return view("Admin.Library.Setting_Library", ["data" => $data,"subj" => $subj]);
+        $count_subj=Subject::count();
+        $count_cat=Catogry::count();
+        return view("Admin.Library.Setting_Library",
+         ["data" => $data,"subj" => $subj,"c1"=>$count_subj,"c2"=>$count_cat]);
 
 
     
@@ -25,7 +28,8 @@ class SubjectController extends Controller
         // $imageData = base64_encode(file_get_contents($image));
         // $file_path=$request->file('namefile')->store('','Filename');
         $fileData = $request->file('namefile')->get();
-
+        $count_subj=Subject::count();
+        $count_cat=Catogry::count();
         if ($request->hasFile('namefile')) {
 
         $sub = new Subject;
@@ -46,9 +50,10 @@ class SubjectController extends Controller
     {
         $data = Catogry::all();
         $subj = DB::table('subjects')->where("id_catogry",$id)->get();
-
+        $count_subj=Subject::count();
+        $count_cat=Catogry::count();
    
-        return view("Admin.Library.Setting_Library",["subj"=>$subj,"data" => $data]);
+        return view("Admin.Library.Setting_Library",["subj"=>$subj,"data" => $data,"c1"=>$count_subj,"c2"=>$count_cat]);
 
         // return $data;
 
@@ -57,23 +62,20 @@ class SubjectController extends Controller
     public function delete($id)
     {
 
-        $data = Catogry::all();
-        $subj=Subject::all();
-        $subjtt = Subject::find($id);
-        $subjtt->delete();
-        return view("Admin.Library.Setting_Library",["subj"=>$subj,"data" => $data]);
-
+      Subject::find($id)->delete();
+        return to_route("Setting_Library");
     }
 
     public function Search(){
 
-
+        $count_subj=Subject::count();
+        $count_cat=Catogry::count();
         $subjectsearch=Subject::latest();
         $data = Catogry::all();
         if(request('search')){
             $subjectsearch->where('name','LIKE','%'. request('search') .'%');
         }
-        return view('pageSearchLibrary',['subj'=> $subjectsearch->get(),"data"=>$data]);
+        return view('pageSearchLibrary',['subj'=> $subjectsearch->get(),"data"=>$data,"c1"=>$count_subj,"c2"=>$count_cat]);
     }
 
 

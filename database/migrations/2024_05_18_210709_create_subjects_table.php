@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->binary('src_bdf')->comment("مسار ملف PDF")->nullable();
-            $table->foreignId('id_catogry')->constrained('catogries');
+            $table->foreignId('id_catogry')->constrained('catogries')->cascadeOnDelete();;
             $table->timestamps();
         });
     }

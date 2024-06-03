@@ -50,18 +50,7 @@ class RegisterStudent_Controller extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-   
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function show(string $id)
     {
         $data = Register_student::where("id", $id)->first();
         return view("Admin.info_regster_student", ["data" => $data]);

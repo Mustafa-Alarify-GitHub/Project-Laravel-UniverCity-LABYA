@@ -16,6 +16,10 @@ class CatogryController extends Controller
     }
     public function create(Request $request){
 
+        $request->validate([
+            "name"=> "required|string|min:3",
+        ]);
+        
         $catogry = Catogry::create([
             'name'=>$request->name
         ]);
