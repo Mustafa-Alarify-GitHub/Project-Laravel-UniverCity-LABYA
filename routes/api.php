@@ -38,6 +38,7 @@ Route::get('/get-all-catogries', function () {
 | @des   Get Book by ID ()
 */
 Route::get('/get-books/{id}', function ($id) {
+
     $data = Subject::where("id_catogry", $id)->get();
     return response()->json(["status" => 200, "data" => $data]);
 });
@@ -113,4 +114,15 @@ Route::get("/Get-Status-Register-student/{id}", function ($id) {
 Route::get("/Get-All-News", function(){
     $data = News::get();
     return response()->json(["status" => 200, "data" => $data]);
+});
+/*
+| @method get
+| @route /Open-books
+| @des   Open Books
+*/
+Route::get("/Open-books/{id}", function($id){
+    $pdfData = Subject::findOrFail($id)->src_bdf;
+    return response($pdfData)
+        ->header('Content-Type', 'application/pdf')
+        ->header('Content-Disposition', 'inline; filename="filename.pdf"');
 });
