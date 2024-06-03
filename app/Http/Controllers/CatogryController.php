@@ -24,7 +24,14 @@ class CatogryController extends Controller
     }
 
 
+    public function edit(Request $req, $id)
+    {
+        $catogry = Catogry::find($id);
 
+                $catogry->name = $req->name;
+                $catogry->save();
+        return redirect()->route('Get_All_Cat');
+    }
 
 
     public function delete($id)

@@ -24,10 +24,12 @@ class SubjectController extends Controller
         // $image = $request->file('namefile');
         // $imageData = base64_encode(file_get_contents($image));
         // $file_path=$request->file('namefile')->store('','Filename');
-        $fileData = $request->file('namefile')->get();
+
+
+   
 
         if ($request->hasFile('namefile')) {
-
+     $fileData = $request->file('namefile')->get();
         $sub = new Subject;
         $sub->name=$request->bookname;
         $sub->src_bdf =$fileData;
@@ -50,8 +52,18 @@ class SubjectController extends Controller
    
         return view("Admin.Library.Setting_Library",["subj"=>$subj,"data" => $data]);
 
-        // return $data;
 
+
+    }
+
+
+    public function edit(Request $req, $id)
+    {
+        $catogry = Catogry::find($id);
+
+                $catogry->name = $req->name;
+                $catogry->save();
+        return redirect()->route('Get_All_Cat');
     }
 
     public function delete($id)
@@ -61,7 +73,8 @@ class SubjectController extends Controller
         $subj=Subject::all();
         $subjtt = Subject::find($id);
         $subjtt->delete();
-        return view("Admin.Library.Setting_Library",["subj"=>$subj,"data" => $data]);
+
+        return redirect()->route("Setting_Library");
 
     }
 

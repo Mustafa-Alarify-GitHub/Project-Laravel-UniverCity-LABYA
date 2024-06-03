@@ -57,28 +57,11 @@
 
 
                    @foreach ($subj as $sb)
-
-                   <div class="table_books_body">
-                    <h3 style="width: 20%">{{$sb->id}}</h3>
-                    <h3 style="width: 40%"> {{$sb->name}}</h3>
-                    <a href="{{ route('pdf.view',$sb->id) }}">View PDF</a>
-                    <div style="display: flex ;width: 40%;justify-content: space-around">
+                   <script>
                     
-                        <form action="{{ route('delete.subject', $sb->id) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit"><img src="{{asset('image/image/icon_delete.png')}}" alt=""></button>
-                        </form>
-                        <a href="#"><img src="{{asset('image/image/icon_edit.png')}}" alt=""></a>
-                    </div>
-                </div>
-           
-                   {{-- <script>
-      
-                   
                       tr_books({{{$sb->id}}},"{{$sb->name}}");
 
-                   </script> --}}
+                   </script>
                
                @endforeach
 

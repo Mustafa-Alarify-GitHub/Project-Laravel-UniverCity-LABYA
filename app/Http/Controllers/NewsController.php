@@ -54,6 +54,6 @@ $news->save();
     $imageData = News::findOrFail($id)->img;
 
     return response($imageData)
-        ->header('Content-Type', 'image/jpeg'); // or 'image/png' حسب نوع الصورة
+        ->header('Content-Type', 'image/jpeg'); 
 }
 }

@@ -19,7 +19,8 @@ Route::get('/', function () {
 Route::controller(CatogryController::class)->group(function(){
     Route::get('Get_All_Cat','index')->name('Get_All_Cat'); 
     Route::post('/add','create')->name('Add');  
-    Route::delete('/catogries/{id}','delete');
+    Route::get('/catogries/{id}','delete');
+    Route::put('/catogriesedit/{id}','edit');
 
     Route::post('/ee','Search')->name('seeerch.index'); 
 
@@ -30,15 +31,6 @@ Route::controller(RegisterStudent_Controller::class)->group(function(){
     Route::get('/regster_student','index')->name('regster_student'); 
     Route::get('/Student_Grades','student_grades')->name('Student_Grades'); 
     Route::get('/info-regster_student/{id}',"show")->name('show.regster_student'); 
-
-    // Route::post('/addregister','create')->name('add.register');  
-    // Route::get('/showregister/{id}','showregister')->name('show.register'); 
-    // Route::delete('/deleteregister/{id}','delete')->name('delete.register');
-
-    // Route::get('/get','index')->name('get_register'); 
-
-
-
 
 });
 
@@ -60,7 +52,8 @@ Route::controller(SubjectController::class)->group(function(){
     Route::get('/show/{id}','showsubject')->name('show.subject'); 
     Route::get('/pdf/{id}','viewPdf')->name('pdf.view'); 
 
-    Route::delete('/deletesubject/{id}','delete')->name('delete.subject');
+    Route::put('/subjectedit/{id}','edit')->name('edit.subject');
+    Route::get('/deletesubject/{id}','delete')->name('delete.subject');
     Route::post('/','Search')->name('serch.index'); 
 });
 
