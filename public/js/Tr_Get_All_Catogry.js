@@ -8,8 +8,7 @@ function Tr_Catogry(id, name, Date) {
         <h2 style="width:35%;text-align: center">${Date}</h2>
         <div style="display: flex ;width: 20%;justify-content: space-around">
         <button onclick="test(${id})" id="btn_delete_cat"><img src="image/icon_delete.png" alt=""></button>
-        <button  id="btn_add_cat"><img src="image/icon_edit.png"  alt=""></button>
-    
+        <a href="#"><img src="image/icon_edit.png"  alt=""></a>
       </div>
     </div>
     `);

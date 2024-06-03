@@ -38,6 +38,7 @@ Route::get('/get-all-catogries', function () {
 | @des   Get Book by ID ()
 */
 Route::get('/get-books/{id}', function ($id) {
+
     $data = Subject::where("id_catogry", $id)->get();
     return response()->json(["status" => 200, "data" => $data]);
 });
@@ -47,17 +48,22 @@ Route::get('/get-books/{id}', function ($id) {
 | @des   regster new student
 */
 Route::post('/Regster-student', function (Request $req) {
+    // return response()->json(["massge" =>  $req->all() ]);
+
 
     $D = Register_student::where("number_GOV", $req->number_GOV)
         ->first();
 
     if ($D) {
-        return response()->json(["status" => 400, "massge" => "قدتم ارسال طلبك با الفعل"]);
+        return response()->json(["status" => 400, "massge" => "قدتم ارسال طلبك باالفعل"]);
     } else {
-
+        
+        
         // TODO uploade img
-        // $img_hith_lev_path = $req->file('img_hith_lev')->store('', 'Img_Hith_Level');
-        // $img_bir_path = $req->file('img_bir')->store('', 'Img_Birth');
+        $img_hith_lev_path = $req->file('img_hith_level')->store('', 'Img_Hith_Level');
+        $img_bir_path = $req->file('img_birth')->store('', 'Img_Birth');
+        // $img_bir_path = "0req->file('img_birth')->store('', 'Img_Birth')";
+        
 
         $data = Register_student::create([
             'name' => $req->name,
@@ -69,8 +75,8 @@ Route::post('/Regster-student', function (Request $req) {
             'address' => $req->address,
             'name_mather' => $req->name_mather,
             'nationality_mather' => $req->nationality_mather,
-            'img_birth' => $req->img_birth,
-            'img_hith_level' => $req->img_hith_level,
+            'img_birth' => $img_bir_path,
+            'img_hith_level' => $img_hith_lev_path,
             'type_s' => $req->type_s,
             'rate' => $req->rate,
             'number_phone' => $req->number_phone,
@@ -108,4 +114,15 @@ Route::get("/Get-Status-Register-student/{id}", function ($id) {
 Route::get("/Get-All-News", function(){
     $data = News::get();
     return response()->json(["status" => 200, "data" => $data]);
+});
+/*
+| @method get
+| @route /Open-books
+| @des   Open Books
+*/
+Route::get("/Open-books/{id}", function($id){
+    $pdfData = Subject::findOrFail($id)->src_bdf;
+    return response($pdfData)
+        ->header('Content-Type', 'application/pdf')
+        ->header('Content-Disposition', 'inline; filename="filename.pdf"');
 });

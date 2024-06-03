@@ -88,13 +88,13 @@
         <div style="width: 48%">
             <h1>صوره شهاده الميلاد</h1>
             <div id="border_img_info">
-                <img src="{{ asset($data->img_birth) }}" width="100%" height="100%" alt="حدث خطأ">
+                <img src="{{ asset("img_birth/$data->img_birth") }}" width="100%" height="100%" alt="حدث خطأ">
             </div>
         </div>
         <div style="width: 48%">
             <h1>صوره شهاده الثنويه</h1>
             <div id="border_img_info">
-                <img src="{{ asset($data->img_hith_level) }}" width="100%" height="100%" alt="حدث خطأ">
+                <img src="{{ asset("img_hith_level/$data->img_hith_level") }}" width="100%" height="100%" alt="حدث خطأ">
             </div>
         </div>
     </div>

@@ -26,6 +26,9 @@
         <h1 onclick="close_form_add();" id="btn_exit_form_book">X</h1>
         <h1>أضافه قسم جديد</h1>
         <input type="text" id="input_add" name="name">
+        @error('name')
+            <p style="color: rgb(255, 255, 255);margin: 5px 0;">يجب أضافه ألاسم</p>
+        @enderror
         <button id="btn_add" type="submit" >أضافه</button>
     </form>
 
