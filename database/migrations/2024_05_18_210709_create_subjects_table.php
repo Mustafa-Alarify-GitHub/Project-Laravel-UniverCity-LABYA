@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->binary('src_bdf')->comment("مسار ملف PDF")->nullable();
+            // $table->binary('src_bdf');
             $table->foreignId('id_catogry')->constrained('catogries')->cascadeOnDelete();
             $table->timestamps();
         });

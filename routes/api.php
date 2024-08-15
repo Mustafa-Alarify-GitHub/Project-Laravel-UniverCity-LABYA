@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubjectController;
 use App\Models\Catogry;
 use App\Models\News;
 use App\Models\Register_student;
@@ -7,6 +8,7 @@ use App\Models\Stetting;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,8 @@ Route::get('/get-all-catogries', function () {
 */
 Route::get('/get-books/{id}', function ($id) {
 
-    $data = Subject::where("id_catogry", $id)->get();
+    // Catogry::all();
+   $data =  DB::select("SELECT id,name FROM `subjects` WHERE id_catogry = $id");
     return response()->json(["status" => 200, "data" => $data]);
 });
 /*
@@ -112,7 +115,7 @@ Route::get("/Get-Status-Register-student/{id}", function ($id) {
 | @des   Get all data Table News
 */
 Route::get("/Get-All-News", function(){
-    $data = News::get();
+    $data = News::orderBy("id","desc")->get();
     return response()->json(["status" => 200, "data" => $data]);
 });
 /*
@@ -120,9 +123,4 @@ Route::get("/Get-All-News", function(){
 | @route /Open-books
 | @des   Open Books
 */
-Route::get("/Open-books/{id}", function($id){
-    $pdfData = Subject::findOrFail($id)->src_bdf;
-    return response($pdfData)
-        ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'inline; filename="filename.pdf"');
-});
+Route::get("/Open-books/{id}", [SubjectController::class,"viewPdf"]);

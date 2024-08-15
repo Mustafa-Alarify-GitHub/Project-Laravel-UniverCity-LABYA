@@ -66,6 +66,13 @@ return [
             'visibility' => 'public',
             'throw'=>false,
         ],
+        'img_news' => [
+            'driver' => 'local',
+            'root' => public_path('img_news'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw'=>false,
+        ],
 
         'Img_Hith_Level' => [
             'driver' => 'local',
