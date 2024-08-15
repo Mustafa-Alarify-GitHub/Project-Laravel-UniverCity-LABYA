@@ -1,6 +1,6 @@
 This is web And Api
 
-<a herf="https://github.com/Mustafa-Alarify-GitHub/Project-Flutter-UniverCity-LABYA-">
+<a href="https://github.com/Mustafa-Alarify-GitHub/Project-Flutter-UniverCity-LABYA-">
 repo the app mobile
 </a>
 <img src="public/1.png" alt="">
